@@ -1,0 +1,28 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css);
+
+.container{
+    margin: 0 auto;
+    width: 1400px;
+
+}
+.title-area{
+    margin: 144px 0 116px;
+    text-align: center;
+}
+.title-area .title{
+    font-size: 24px;
+    color: #252525;
+    position: relative;
+    padding-bottom: 32px;
+}
+.title-area .title::after{
+    content: ''; 
+    position: absolute; 
+    background-color: #e7e7e7; left: 50%; transform: translateX(-50%); bottom: 0; width: 158px; height: 1px;
+}
+.title-area .desc{
+    font-size: 20px;
+    color: #252525;
+    margin-top: 32px;
+}
