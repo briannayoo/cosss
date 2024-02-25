@@ -1,6 +1,8 @@
 /* Main menu */
 .fixed{
     position: fixed;
+    left: 0;
+    right: 0;
 }
 nav{
     margin-top: 20px;
@@ -10,17 +12,20 @@ nav{
     align-items: center;
     justify-content: space-between;
     font-family: "Noto Sans KR", sans-serif;
+    position: relative;
 }
 nav h1{
     font-size: 40px;
     order: 2;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform:translateX(-50%)
 }
-nav ul{
+nav > ul{
     display: flex;
     order: 1;
-    margin: 0 auto;
     justify-content: space-between;
 }
 
@@ -28,6 +33,15 @@ nav ul:after{
     content:'';
     display: block;
     clear: both;
+}
+nav .lnb{
+    width: 600px;     
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    text-align: left;
+    gap:20px;
 }
 body{
     background: transparent;
@@ -44,23 +58,25 @@ nav{
     width: 1400px;
     margin: 0 auto;
 }
-nav ul > li {
+nav > ul > li {
     float:left; 
     line-height:50px; 
     margin-right:40px; 
     position: relative;
 }
+/*
 header nav ul li ul{ 
     width:100%; 
     display: none;
     position: absolute;
 }
+*/
 header nav ul li ul li{
     white-space:nowrap;
 }
 
 nav > ul > li:hover ul{
-    display:block;
+    display:flex;
 }
 #icon{
     order: 3;
@@ -68,6 +84,95 @@ nav > ul > li:hover ul{
 }
 
 /* banner */
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialised;
+}
+.slideshow {
+    margin:0;
+    padding:0;
+}
+.slide-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 600px;
+}
+.slide-container {
+    position: absolute;
+    width: 100%;
+    height:100%;
+    margin:0;
+    padding: 0;
+    transition: left .3s ease-in;
+    left: 0;
+}
+.slide-container>li {
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    list-style: none;
+}
+.slide-wrapper .controls {
+    position: absolute;
+    top: 50%;
+    transform:translateY(-50%);
+    z-index: 999999;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    transition: all .3s ease-in;
+    background: rgba(255, 255, 255, .5);
+    text-align: center;
+    line-height: 5rem;
+    font-size: 20px;
+    color: #444;
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
+}
+
+#prev.disabled,
+#next.disabled {
+    display: none;
+}
+
+.slide-wrapper .controls:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.pager {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+.pager a {
+    width: 10px;
+    height: 10px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background: #ccc;
+    text-indent: -9999em;
+    cursor: pointer;
+    display: inline-block;
+}
+.pager a.active {
+    background: #000;
+}
+/*
 *{ margin:0;
     padding: 0;  
   }
@@ -94,8 +199,8 @@ nav > ul > li:hover ul{
     opacity: 1;
     visibility: visible;
   }
-  .slidewrapper button{
-    background: #000;
+  .slideshow button{
+    background: ##252525;
     color: #fff;
     padding: 5px 8px;
     position: absolute;
@@ -103,12 +208,13 @@ nav > ul > li:hover ul{
     transform:translateY(-50%);
     font-size: 2em;
   }
-  .slidewrapper .prev{
+  .slideshow .prev{
     left: 50px;
   }
-  .slidewrapper .next{
+  .slideshow .next{
     right: 50px;
   }
+  */
 /* main cate 1 */
 .main_cate_list{
     display: flex;
@@ -121,7 +227,7 @@ nav > ul > li:hover ul{
     position: absolute;  
     right: 20px;
     bottom: 20px;  
-    color: #000;
+    color: #252525;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: bold;
     font-size: 20px;
@@ -148,4 +254,23 @@ nav > ul > li:hover ul{
 }
 .main_cate_list li{
     position: relative;
+}
+.link4 .text_nature{
+    width: 690px;
+    height: 200px;
+    padding: 10px 0;
+    background-color:#F2EFEA;
+    text-align: center;
+}
+.text_nature h2{
+    font-size: 40px;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #252525;
+}
+.text_nature p{
+    font-size: 18px;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #252525;
+    margin-top: 20px;
+    line-height: 2;
 }

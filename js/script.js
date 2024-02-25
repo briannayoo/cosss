@@ -1,52 +1,82 @@
-// 메인 메뉴 마우스오버
-const mainMenu = document.querySelectorAll('#list > li');
+//슬라이드 배너
+let sliderWrapper = document.querySelector('.slidewrapper'),
+    slideContainer = sliderWrapper.querySelector('.slidecontainer'),
+    slides = slideContainer.querySelectorAll('.slidecontainer > li'),
+    slideCount = slides.length,
+    currentIdx = 0,
+    timer,    
+    pager = sliderWrapper.querySelector('.pager'),
+  
+    pagerHTML ='',
+    prevBtn = sliderWrapper.querySelector('#prev'),
+    nextBtn = sliderWrapper.querySelector('#next');
 
-const header = document.querySelector('header');
-const headerHeight = header.offsetHeight;
-console.log(headerHeight);
-for(let mm of mainMenu){
-  mm.addEventListener('mouseover',()=>{
-    mm.querySelector('ul').style.display = '';
-    let smHeight = mm.querySelector('ul').offsetHeight;
-    let totalHeight = smHeight + headerHeight;
-    header.style.height = `${totalHeight}px`;
-  });
-  mm.addEventListener('mouseout',()=>{
-    header.style.height = `${headerHeight}px`;
-  });
-}
+slides.forEach((item, i)=>{
+  item.style.left = `${i*100}%`;
+  pagerHTML = pagerHTML + `<a href="">${i+1}</a>`;
+});
 
+pager.innerHTML = pagerHTML;
 
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-const slideCount = slides.length;
-let currentIdx = 0;
-let timer;
+let pagerBtn = pager.querySelectorAll('a');
 
-function showSlide(idx){
+function goToSlide(idx){
+  slideContainer.style.left = `${idx*-100}%`;
+  currentIdx = idx;
+
+  if(currentIdx === slideCount - 1){
+    nextBtn.classList.add('disabled');
+  } else{
+    nextBtn.classList.remove('disabled');
+  }
+  if(currentIdx === 0){
+    prevBtn.classList.add('disabled');
+  } else{
+    prevBtn.classList.remove('disabled');
+  } 
+
+  for(let pb of pagerBtn){
+    pb.classList.remove('active');
+  }
+  pagerBtn[currentIdx].classList.add('active');
+
   for(let slide of slides){
     slide.classList.remove('active');
   }
-  slides[idx].classList.add('active');
-  currentIdx = idx;
+  slides[currentIdx].classList.add('active');
+
+  
 }
-showSlide(0);
-nextBtn.addEventListener('click',()=>{
-  let nextIdx = (currentIdx + 1) % slideCount;
-  showSlide(nextIdx);
-})
-prevBtn.addEventListener('click',()=>{
-  let nextIdx = (currentIdx - 1 + slideCount) % slideCount;
-  showSlide(nextIdx);
-})
+goToSlide(0);
+
+nextBtn.addEventListener('click', ()=>{
+  goToSlide(currentIdx+1);
+});
+prevBtn.addEventListener('click', ()=>{
+  goToSlide(currentIdx-1);
+});
 
 
+pagerBtn.forEach((item,idx)=>{
+  item.addEventListener('click',(e)=>{
+    e.preventDefault();
+    goToSlide(idx);
+  });
+});
 
-function randomSlide(){
+
+function autoSlide(){
   timer = setInterval(()=>{
-    let nextIdx = Math.floor(Math.random()*4);
-    showSlide(nextIdx);
-  }, 3000);
+    let nextIdx = (currentIdx + 1)% slideCount;
+    goToSlide(nextIdx);
+  }, 4000);
 }
-randomSlide();
+
+sliderWrapper.addEventListener('mouseenter',()=>{
+  clearInterval(timer);
+});
+sliderWrapper.addEventListener('mouseleave',()=>{
+  autoSlide();
+});
+
+autoSlide();
