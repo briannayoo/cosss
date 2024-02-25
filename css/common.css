@@ -15,7 +15,7 @@
     text-align: center;
 }
 .title-area .title{
-    font-size: 24px;
+    font-size: 40px;
     color: #252525;
     position: relative;
     padding-bottom: 32px;
@@ -47,13 +47,19 @@ header .header_wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
 }
 
 /* 로고 */
 header .header_wrapper h1 {
-  font-size: 50px;
+
+  font-size: 40px;
+  font-weight: bold;
   order: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* 네비게이션 */
@@ -123,6 +129,6 @@ header .header_wrapper .icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
   font-size: 35px;
 }

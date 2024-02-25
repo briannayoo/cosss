@@ -1,3 +1,17 @@
+document.addEventListener("DOMContentLoaded", function() {
+  var header = document.getElementById(".header");
+
+  // 스크롤 이벤트를 감지하여 메뉴 색상 변경
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 0) {
+      header.style.backgroundColor = "#ffffff"; // 스크롤을 내릴 때 메뉴 색상을 흰색으로 변경
+    } else {
+      header.style.backgroundColor = "transparent"; // 스크롤을 올릴 때 메뉴 색상을 투명으로 변경
+    }
+  });
+});
+
+
 //슬라이드 배너
 let sliderWrapper = document.querySelector(".slidewrapper"),
   slideContainer = sliderWrapper.querySelector(".slidecontainer"),
@@ -92,3 +106,5 @@ for(let li of gnb){
     gnbBg.style.visibility = 'hidden';
   })
 }
+
+
