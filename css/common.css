@@ -98,7 +98,6 @@ position: relative;
 
 }
 .gnb .depth02 li{
-  width: 1000px;
   line-height: 50px;
 }
 .gnb_bg {
@@ -124,6 +123,6 @@ header .header_wrapper .icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
   font-size: 35px;
 }

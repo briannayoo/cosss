@@ -77,9 +77,11 @@ header nav ul li ul li {
   white-space: nowrap;
 }
 
+/*
 nav > ul > li:hover ul {
   display: flex;
 }
+*/
 #icon {
   order: 3;
   gap: 50px;
