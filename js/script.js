@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  var header = document.getElementById(".header");
+  const header = document.querySelector(".header");
 
   // 스크롤 이벤트를 감지하여 메뉴 색상 변경
   window.addEventListener("scroll", function() {
